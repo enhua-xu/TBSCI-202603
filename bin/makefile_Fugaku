@@ -1,0 +1,33 @@
+FC = mpifrtpx
+
+FFLAGS = -Kfast,parallel,openmp,SVE,-Xmpi-thread-multiple
+
+
+OBJS = MAIN.o READ_AND_SET.o MPIBAL.o LINKS.o CAL_HAMILTONIAN.o 
+
+all: SCI.out
+
+SCI.out: $(OBJS)
+	$(FC) $(FFLAGS) $(OBJS) -o SCI.out -SCALAPACK -SSL2BLAMP -lc
+
+MAIN.o: MAIN.f90
+	$(FC) $(FFLAGS) -c MAIN.f90
+	
+READ_AND_SET.o: READ_AND_SET.f90
+	$(FC) $(FFLAGS) -c READ_AND_SET.f90
+
+MPIBAL.o: MPIBAL.f90
+	$(FC) $(FFLAGS) -c MPIBAL.f90
+
+LINKS.o: LINKS.f90
+	$(FC) $(FFLAGS) -c LINKS.f90
+
+CAL_HAMILTONIAN.o: CAL_HAMILTONIAN.f90
+	$(FC) $(FFLAGS) -c CAL_HAMILTONIAN.f90
+
+#RDMs.o: RDMs.f90
+#	$(FC) $(FFLAGS) -c RDMs.f90
+
+
+clean:
+	rm -f $(OBJS) SCI.out

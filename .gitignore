@@ -1,0 +1,4 @@
+FCI_results/
+TBSCI_results/
+*.tar.gz
+.DS_Store
