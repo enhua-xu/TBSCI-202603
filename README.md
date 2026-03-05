@@ -1,7 +1,7 @@
 # TBSCI-202603
 
-This repository provides executable binaries of the TBSCI eigensolver used in the associated manuscript.
-Bitstring preparation was performed using an external SCI tool as described in the associated manuscript.
+This repository provides executable binaries of the TBSCI eigensolver used in the associated manuscript. 
+Bitstring preparation is performed using an external SCI tool as described in the manuscript.
 
 Representative input and output data for selected benchmark systems are distributed via GitHub Releases.
 
@@ -22,7 +22,7 @@ the Releases page.
 
 ---
 
-## Data availability (GitHub Releases)
+## Data availability
 
 Representative input and output data accompanying the manuscript are provided as compressed files 
 through GitHub Releases:
@@ -43,7 +43,7 @@ Each test-case directory contains the core set of files required to reproduce th
 - *.FCIDUMP
 
   One- and two-electron integrals in FCIDUMP format.
-  Core orbitals are included in the FCIDUMP files; freezing is applied at runtime via the NFO parameter
+  Core orbitals are included in the FCIDUMP files; freezing is applied at runtime via the `NFO` parameter
   specified in the corresponding `*.input` file.
 
   All FCIDUMP files are generated using PySCF. Accordingly, the character tables, irreducible 
@@ -61,12 +61,14 @@ Each test-case directory contains the core set of files required to reproduce th
 
   - `NFO`: number of frozen core orbitals. `Default: 0`.
   - `NFV`: number of frozen virtual orbitals. `Default: 0`.
-  - `Nirp`: number of irreducible representations (irreps) of the point group (e.g., 8 for D2h, 4 for C2v). 
+  - `Nirp`: number of irreducible representations (irreps) of the point group (e.g., 8 for D2h, 4 for C2v).  
     `Default: 1`.
-  - `Target_irp`: target irreducible representation (symmetry sector) for the ground-state calculation. 
+  - `Target_irp`: target irreducible representation (symmetry sector) for the ground-state calculation.  
     `Default: 0`.
   - `Conv`: energy convergence threshold. `Default: 1.0D-7`.
-
+  - `BALANCE`: load-balancing strategy for distributing segments across MPI processes. `Default: 0`.
+    - `0`: memory-average distribution
+    - `1`/`2`: overall average distribution (`2` recommended)
  
 - *.strA and *.strB
 
@@ -79,8 +81,8 @@ Each test-case directory contains the core set of files required to reproduce th
   bitstrings in the FCI space.
   
   In `TBSCI_results/`, the corresponding files contain bitstrings extracted from important determinants 
-  provided by DICE and ordered by their weights; each line consists of an integer-encoded bitstring and 
-  its associated weight.
+  provided by DICE and ordered by their weights; each line contains an integer-encoded bitstring and its
+  associated weight.
 
 - *.out
 
@@ -135,7 +137,7 @@ where:
   corresponding input files (`filename.FCIDUMP`, `filename.strA`, `filename.strB`, `filename.input`, 
   and `filename.charT`).
 - `<nAlpha>` is the number of alpha bitstrings to include in the TBSCI calculation.
-- `<nBeta>`  is the number of beta  bitstrings to include in the TBSCI calculation.
+- `<nBeta>` is the number of beta  bitstrings to include in the TBSCI calculation.
 - `<nThreads>` is the number of OpenMP threads per MPI process.
 
 Notes:
@@ -151,12 +153,12 @@ All results reported in the associated manuscript and the output files provided 
 were obtained on Fugaku using `Fugaku_exe.out`.
 
 Intel_exe.out was compiled on an internal Intel-based Linux cluster and is provided for reference; 
-Its parallel performance on other HPC systems has not been systematically evaluated.
+its parallel performance on other HPC systems has not been systematically evaluated.
 
 - This repository contains executable binaries and representative data only; source code is not included.
 - This repository is frozen to match the results reported in the associated manuscript.
 - Future developments will be released in separate repositories.
-- If you use this repository for scientific work, please cite the associated paper:
+- If you use this repository in scientific work, please cite the associated paper:
 
   https://arxiv.org/abs/2503.10335
 
