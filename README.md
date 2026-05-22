@@ -158,8 +158,9 @@ its parallel performance on other HPC systems has not been systematically evalua
 - This repository contains executable binaries and representative data only; source code is not included.
 - This repository is frozen to match the results reported in the associated manuscript.
 - Future developments will be released in separate repositories.
-- If you use this repository in scientific work, please cite the associated paper:
+- If you use this repository in scientific work, please cite:
 
-  https://arxiv.org/abs/2503.10335
-
-Formal citation information will be added upon publication.
+    E. Xu, W. Dawson, H. Pathak, and T. Nakajima,
+    "A scalable diagonalization framework for tensor-product bitstring selected configuration interaction",
+    J. Chem. Phys. 164, 194103 (2026).
+    https://doi.org/10.1063/5.0332736
